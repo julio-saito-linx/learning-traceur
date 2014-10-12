@@ -8,11 +8,28 @@ gulp.task('copyTraceurRunTime', function () {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', ['copyTraceurRunTime'], function () {
-    return gulp.src('src/*.js')
+gulp.task('traceurNode', function () {
+    return gulp.src('src/nodeTest.js')
         .pipe(sourcemaps.init())
-        .pipe(traceur())
-        .pipe(concat('all.js'))
+        .pipe(traceur({
+        	sourceMaps: true,
+        	modules: 'commonjs'
+      	 }))
+        .pipe(concat('nodeTest.js'))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('dist'));
 });
+
+gulp.task('traceurBrowser', function () {
+    return gulp.src('src/browserTest.js')
+        .pipe(sourcemaps.init())
+        .pipe(traceur({
+        	sourceMaps: true,
+        	modules: 'commonjs'
+      	 }))
+        .pipe(concat('browserTest.js'))
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest('dist'));
+});
+
+gulp.task('default', ['traceurNode', 'traceurBrowser', 'copyTraceurRunTime']);

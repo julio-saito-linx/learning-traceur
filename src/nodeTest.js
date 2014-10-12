@@ -1,4 +1,5 @@
-// greeter.js
+require('traceur');
+
 class Greeter {
   sayHi(name = 'Anonymous') {
     console.log(`Hi ${name}!`);
@@ -6,4 +7,5 @@ class Greeter {
 }
 
 var greeter = new Greeter();
+
 greeter.sayHi();

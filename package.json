@@ -13,5 +13,8 @@
     "gulp-concat": "^2.4.1",
     "gulp-sourcemaps": "^1.2.4",
     "gulp-traceur": "^0.13.0"
+  },
+  "dependencies": {
+    "traceur": "0.0.66"
   }
 }
