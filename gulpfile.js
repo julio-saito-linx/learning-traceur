@@ -21,7 +21,7 @@ gulp.task('traceurNode', function () {
 });
 
 gulp.task('traceurBrowser', function () {
-    return gulp.src('src/browserTest.js')
+    return gulp.src('src/greeter.js')
         .pipe(sourcemaps.init())
         .pipe(traceur({
         	sourceMaps: true,
