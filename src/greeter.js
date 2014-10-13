@@ -4,6 +4,7 @@ class Greeter {
   }
 }
 
-var greeter = new Greeter();
+debugger;
 
+var greeter = new Greeter();
 greeter.sayHi();
