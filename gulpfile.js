@@ -27,9 +27,12 @@ gulp.task('traceurNode', function () {
             sourceMaps: true,
             modules: 'commonjs'
          }))
-        //.pipe(concat('nodeTest.js'))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('dist/node'));
 });
 
-gulp.task('default', ['traceurNode', 'traceurBrowser', 'copyTraceurRunTime']);
+gulp.task('watch', function() {
+  gulp.watch('src/**', ['traceurNode', 'traceurBrowser']);
+});
+
+gulp.task('default', ['traceurNode', 'traceurBrowser', 'copyTraceurRunTime', 'watch']);
