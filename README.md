@@ -8,12 +8,12 @@ gulp
 
 ### run
 ```
-node dist/test.js
+node start.js
 ```
 
 ### debug
 ```
-node-debug dist/test.js
+node-debug start.js
 ```
 
 

@@ -3,6 +3,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var traceur = require('gulp-traceur');
 var concat = require('gulp-concat');
 var clean = require('gulp-clean');
+var plumber = require('gulp-plumber');
 
 gulp.task('clean', function () {
     return gulp.src('dist', {read: false})
@@ -11,6 +12,7 @@ gulp.task('clean', function () {
 
 gulp.task('traceurNode', ['clean'], function () {
     return gulp.src('src/**/*.js')
+        .pipe(plumber())
         .pipe(sourcemaps.init())
         .pipe(traceur({
             sourceMaps: true,
