@@ -1,10 +1,19 @@
 learning-traceur
 ================
 
-### node.js
+### compile
 ```
-node dist/all.js
+gulp
 ```
 
-### on browser
-open browser/index.html
+### run
+```
+node dist/test.js
+```
+
+### debug
+```
+node-debug dist/test.js
+```
+
+

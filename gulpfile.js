@@ -2,25 +2,14 @@ var gulp = require('gulp');
 var sourcemaps = require('gulp-sourcemaps');
 var traceur = require('gulp-traceur');
 var concat = require('gulp-concat');
+var clean = require('gulp-clean');
 
-gulp.task('copyTraceurRunTime', function () {
-    return gulp.src('node_modules/gulp-traceur/node_modules/traceur/bin/traceur-runtime.js')
-        .pipe(gulp.dest('dist/browser'));
+gulp.task('clean', function () {
+    return gulp.src('dist', {read: false})
+        .pipe(clean({force: true}));
 });
 
-gulp.task('traceurBrowser', function () {
-    return gulp.src('src/greeter.js')
-        .pipe(sourcemaps.init())
-        .pipe(traceur({
-        	sourceMaps: true,
-        	modules: 'commonjs'
-      	 }))
-        .pipe(concat('browserTest.js'))
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('dist/browser'));
-});
-
-gulp.task('traceurNode', function () {
+gulp.task('traceurNode', ['clean'], function () {
     return gulp.src('src/**/*.js')
         .pipe(sourcemaps.init())
         .pipe(traceur({
@@ -31,8 +20,10 @@ gulp.task('traceurNode', function () {
         .pipe(gulp.dest('dist/node'));
 });
 
+gulp.task('build', ['traceurNode']);
+
 gulp.task('watch', function() {
-  gulp.watch('src/**', ['traceurNode', 'traceurBrowser']);
+  gulp.watch('src/**', ['build']);
 });
 
-gulp.task('default', ['traceurNode', 'traceurBrowser', 'copyTraceurRunTime', 'watch']);
+gulp.task('default', ['build', 'watch']);

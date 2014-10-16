@@ -4,5 +4,4 @@ class Greeter {
   }
 }
 
-var greeter = new Greeter();
-greeter.sayHi();
+module.exports = Greeter;
