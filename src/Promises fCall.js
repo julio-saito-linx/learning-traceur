@@ -19,28 +19,15 @@ function async(makeGenerator){
   };
 }
 
-function readFile(filename, enc){
-  return new Q.Promise(function (resolve, reject, notify){
-    fs.readFile(filename, enc, function (err, res){
-      if (err){
-        reject(err);
-      }
-      resolve(res);
-    });
-  });
-}
+var readFile = async(function *(filename){
+  return fs.readFile(filename, 'utf8');
+});
 
-var readJSON = async(function *(filename){
-  return JSON.parse(yield readFile(filename, 'utf8'));
+var readJSON = async(function *(text){
+  return JSON.parse(text);
 });
 
 module.exports = function() {
     debugger;
-    return new Q.Promise(function (resolve, reject, notify){
-
-        readJSON('./package.json').then(function(result) {
-            resolve(result.toString().length + '');
-        });
-
-    });
+    return readFile('./package.json').then(readJSON);
 };

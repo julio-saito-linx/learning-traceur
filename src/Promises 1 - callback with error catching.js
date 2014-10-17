@@ -31,7 +31,7 @@ module.exports = function() {
                 reject(err);
             }
 
-            resolve(result.toString().length + '');
+            resolve(result.version);
         });
 
     });

@@ -10,7 +10,7 @@ module.exports = function() {
     return new Q.Promise(function (resolve, reject, notify){
 
     	var result = readJSONSync('./package.json');
-    	resolve(result.toString().length + '');
+    	resolve(result.version);
 
     });
 };

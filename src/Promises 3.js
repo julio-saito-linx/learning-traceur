@@ -2,27 +2,25 @@ var Q = require('q');
 var fs = require('fs');
 
 function readFile(filename, enc){
-  return new Q.Promise(function (resolve, reject, notify){
-    fs.readFile(filename, enc, function (err, res){
-      if (err){
-        reject(err);
-      }
-      resolve(res);
-    })
-  })
+  return Q.fcall(fs.readFile, filename, enc);
 }
 
-function readJSON(filename){
-  return readFile(filename, 'utf8').then(JSON.parse)
+function readJSON(text){
+  return Q.fcall(JSON.parse, text);
 }
 
 module.exports = function() {
     debugger;
     return new Q.Promise(function (resolve, reject, notify){
 
-        readJSON('./package.json').then(function(result) {
-            resolve(result.toString().length + '');
+        readFile('./package.json', 'utf8')
+        .then(readJSON)
+        .then(function(result) {
+          resolve(result.version);
         })
+        .catch(function(err) {
+          reject(err);
+        });
 
     });
 };

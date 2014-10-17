@@ -29,7 +29,7 @@ module.exports = function() {
     return new Q.Promise(function (resolve, reject, notify){
 
         readJSON('./package.json').then(function(result) {
-            resolve(result.toString().length + '');
+            resolve(result.version);
         })
 
     });
