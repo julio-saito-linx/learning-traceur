@@ -18,15 +18,11 @@
   },
   "dependencies": {
     "cardinal": "^0.4.4",
-    "cli-color": "^0.3.2",
     "glob": "^4.0.6",
-    "indent-string": "^1.1.0",
     "inquirer": "^0.8.0",
     "lodash": "^2.4.1",
     "q": "^1.0.1",
-    "repeating": "^1.1.0",
     "source-map-support": "^0.2.7",
-    "traceur": "0.0.72",
-    "winston": "^0.8.1"
+    "traceur": "0.0.72"
   }
 }

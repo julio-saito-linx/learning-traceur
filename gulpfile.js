@@ -19,13 +19,13 @@ gulp.task('traceurNode', ['clean'], function () {
             modules: 'commonjs'
          }))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('dist/node'));
+        .pipe(gulp.dest('dist'));
 });
 
 gulp.task('build', ['traceurNode']);
 
 gulp.task('watch', function() {
-  gulp.watch('src/**', ['build']);
+  gulp.watch('src/**/*.js', ['build']);
 });
 
 gulp.task('default', ['build', 'watch']);
