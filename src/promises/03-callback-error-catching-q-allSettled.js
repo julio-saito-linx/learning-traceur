@@ -63,13 +63,16 @@ var readJSON_Error_On_JSON = readJSON('./src/promises/jsons/package-invalid.json
 
 module.exports = function() {  debugger;
 
-    Q.all([
+    Q.allSettled([
         readJSON_OK,            // 1    : version: 1.0.0
         readJSON_Error_On_File, // error: ENOENT, open './NOT_EXIST.json'
         readJSON_Error_On_JSON, // error: Unexpected token n
-    ]).then(function() {
-        console.log('4: No errors');
+    ])
+
+    .then(function() {
+        console.log('\n4: Always Executed brecause is `allSettled`\n\n');
     })
+
     .catch(function(err) {
         logError('4: Q.ALL:', err);
         throw err;

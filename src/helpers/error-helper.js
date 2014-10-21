@@ -30,3 +30,5 @@ exports.logError = function(title, err) {
     error.push('');
     winston.error(error.join('\n'));
 };
+
+module.exports = function() {};

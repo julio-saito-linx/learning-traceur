@@ -53,6 +53,9 @@ var createMenu = function (files) {
         if(answers.example.name === 'All'){
             files.forEach(function(file) {
                 if(file.value.dist){
+
+
+                    console.log(file.value)
                     // call all files
                     callExample(file.value.dist, file.value.name);
                 }
@@ -60,6 +63,7 @@ var createMenu = function (files) {
         }
         else{
             // call only selected file
+            console.log('\nnode start.js', answers.example.source);
             callExample(answers.example.dist, answers.example.name);
         }
     });
