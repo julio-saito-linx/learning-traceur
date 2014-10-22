@@ -1,6 +1,6 @@
 var Q = require('q');
 var fs = require('fs');
-var logError = require('../helpers/error-helper').logError;
+var logError = require('../helpers/error-helper')();
 Q.longStackSupport = true;
 
 process.on('uncaughtException', function (err) {
@@ -69,8 +69,8 @@ module.exports = function() {  debugger;
         readJSON_Error_On_JSON, // error: Unexpected token n
     ])
 
-    .then(function() {
-        console.log('\n4: Always Executed brecause is `allSettled`\n\n');
+    .then(function(results) {
+        console.log('\n4: Always Executed brecause is `allSettled`\n', results, '\n\n');
     })
 
     .catch(function(err) {

@@ -1,6 +1,6 @@
 var Q = require('q');
 var fs = require('fs');
-var logError = require('../helpers/error-helper').logError;
+var logError = require('../helpers/error-helper')();
 Q.longStackSupport = true;
 
 process.on('uncaughtException', function (err) {
@@ -22,7 +22,7 @@ module.exports = function() {  debugger;
     console.log('Sequence');
     printNumber({
         number: 0,
-        delay: 200
+        delay: 400
     })
     .then(printNumber)
     .then(printNumber)
