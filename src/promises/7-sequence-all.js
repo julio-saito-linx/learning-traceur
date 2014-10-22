@@ -1,7 +1,7 @@
 var Q = require('q');
 var fs = require('fs');
 var _ = require('lodash');
-var logError = require('../helpers/error-helper')();
+var logError = require('../helpers/error-helper');
 Q.longStackSupport = true;
 
 process.on('uncaughtException', function (err) {
